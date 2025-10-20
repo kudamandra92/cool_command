@@ -1,8 +1,13 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/LoginPage/LoginPage";
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-2xl font-semibold">
-      Hello Dashboard 👋
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

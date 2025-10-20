@@ -8,6 +8,7 @@ export default {
         greenish: "#72B592", // slate-500
         limeish: "#C5E3AA", // amber-500
         yellowish: "#FFFBD9", // light gray
+        background: "#f8fafc", //white
       },
       fontFamily: {
         sans: ["Roboto", "ui-sans-serif", "system-ui"],
