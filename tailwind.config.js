@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        blueish: "#4D6DA0", // blue-600
-        greenish: "#72B592", // slate-500
-        limeish: "#C5E3AA", // amber-500
-        yellowish: "#FFFBD9", // light gray
-        background: "#f8fafc", //white
+        blueish: "#4D6DA0", 
+        greenish: "#72B592", 
+        limeish: "#C5E3AA",
+        yellowish: "#FFFBD9", 
+        background: "#f8fafc", 
       },
       fontFamily: {
         sans: ["Roboto", "ui-sans-serif", "system-ui"],
