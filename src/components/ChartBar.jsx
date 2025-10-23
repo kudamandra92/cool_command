@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -11,35 +11,39 @@ import {
 
 export default function ChartBar() {
   const [range, setRange] = useState("weekly");
+  const [visibleCount, setVisibleCount] = useState(7);
 
-  // 🧩 Dummy Data — simulate changing range
+  // 🧩 Dummy Data — same for all ranges (could be fetched later)
   const dataSets = {
-    daily: [
-      { name: "Mon", value: 50 },
-      { name: "Tue", value: 75 },
-      { name: "Wed", value: 100 },
-      { name: "Thu", value: 80 },
-      { name: "Fri", value: 120 },
-      { name: "Sat", value: 90 },
-      { name: "Sun", value: 60 },
-    ],
-    weekly: [
-      { name: "Week 1", value: 500 },
-      { name: "Week 2", value: 800 },
-      { name: "Week 3", value: 750 },
-      { name: "Week 4", value: 900 },
-    ],
-    monthly: [
-      { name: "Jan", value: 3000 },
-      { name: "Feb", value: 2800 },
-      { name: "Mar", value: 3500 },
-      { name: "Apr", value: 4000 },
-      { name: "May", value: 4200 },
-      { name: "Jun", value: 3900 },
-    ],
+    daily: Array.from({ length: 24 }, (_, i) => ({
+      name: `Day ${i + 1}`,
+      value: Math.floor(Math.random() * 120) + 20,
+    })),
+    weekly: Array.from({ length: 24 }, (_, i) => ({
+      name: `Week ${i + 1}`,
+      value: Math.floor(Math.random() * 1000) + 500,
+    })),
+    monthly: Array.from({ length: 24 }, (_, i) => ({
+      name: `Month ${i + 1}`,
+      value: Math.floor(Math.random() * 5000) + 2000,
+    })),
   };
 
   const data = dataSets[range];
+
+  // 🧠 Handle responsive visible bars
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      const width = window.innerWidth;
+      if (width < 640) setVisibleCount(7); // small (mobile)
+      else if (width < 1024) setVisibleCount(12); // medium (tablet)
+      else setVisibleCount(24); // large (desktop)
+    };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
 
   return (
     <div className="bg-white p-4 rounded-xl shadow-md w-full">
@@ -60,7 +64,7 @@ export default function ChartBar() {
       {/* 📊 Responsive Bar Chart */}
       <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data}>
+          <BarChart data={data.slice(-visibleCount)}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis dataKey="name" tick={{ fontSize: 12 }} />
             <YAxis tick={{ fontSize: 12 }} />
