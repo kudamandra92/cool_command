@@ -1,6 +1,7 @@
 import Sidebar from "../../components/Sidebar";
 import Dropdown from "../../components/Dropdown";
 import ChartBar from "../../components/ChartBar";
+import ChartLine from "../../components/ChartLine"
 
 export default function DashboardPage() {
   const dataSet = {
@@ -43,6 +44,9 @@ export default function DashboardPage() {
 
           <div>
             <ChartBar />
+          </div>
+          <div>
+            
           </div>
         </div>
       </div>
