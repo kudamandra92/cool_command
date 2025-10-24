@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function ChartBar() {
+export default function ChartBar({ title = "" }) {
   const [range, setRange] = useState("weekly");
   const [visibleCount, setVisibleCount] = useState(7);
 
@@ -46,12 +46,12 @@ export default function ChartBar() {
   }, []);
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow-md w-full">
+    <div className="bg-yellowish p-4 rounded-xl shadow-md w-full">
       {/* 🔘 Chart Controls */}
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Sales Overview</h2>
+        <h2 className="text-lg font-semibold">{title}</h2>
         <select
-          className="border rounded-md p-2 text-sm"
+          className="border rounded-md p-2 text-sm text-yellowish bg-blueish"
           value={range}
           onChange={(e) => setRange(e.target.value)}
         >
@@ -69,7 +69,7 @@ export default function ChartBar() {
             <XAxis dataKey="name" tick={{ fontSize: 12 }} />
             <YAxis tick={{ fontSize: 12 }} />
             <Tooltip />
-            <Bar dataKey="value" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="value" fill="#718AB3" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

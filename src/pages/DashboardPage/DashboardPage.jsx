@@ -1,7 +1,7 @@
 import Sidebar from "../../components/Sidebar";
 import Dropdown from "../../components/Dropdown";
 import ChartBar from "../../components/ChartBar";
-import ChartLine from "../../components/ChartLine"
+import ChartLine from "../../components/ChartLine";
 
 export default function DashboardPage() {
   const dataSet = {
@@ -22,7 +22,7 @@ export default function DashboardPage() {
         </div>
         <div className="sm:hidden">+</div>
         <div className="flex flex-col w-full p-8 gap-4">
-          <div className="flex w-full bg-limeish justify-between">
+          <div className="flex w-full justify-between">
             <div className="flex">
               <div>
                 <Dropdown label={"Regional"} items={dataSet.regional} />
@@ -43,10 +43,29 @@ export default function DashboardPage() {
           </div>
 
           <div>
-            <ChartBar />
+            <ChartBar title="Power Consumption" />
           </div>
+
           <div>
-            
+            <ChartLine title="Temperature & Humidity" />
+          </div>
+          <div className="flex flex-col sm:flex-row w-full justify-between h-56 p-4 gap-8 ">
+            <div className="flex flex-col w-full bg-greenish p-6 rounded-xl items-center justify-between text-yellowish">
+              <h1>kudamandra</h1>
+              <h1>kudamandra</h1>
+              <h1>kudamandra</h1>
+            </div>
+            <div className="flex flex-col w-full bg-greenish p-6 rounded-xl items-center">
+              kudamandra
+            </div>
+            <div className="flex flex-col w-full bg-limeish">kudamandra</div>
+            <div className="flex flex-col w-full bg-limeish">kudamandra</div>
+          </div>
+          <div className="flex flex-col sm:flex-row w-full justify-between h-72 bg-greenish">
+            <p>kudamandra</p>
+            <p>kudamandra</p>
+            <p>kudamandra</p>
+            <p>kudamandra</p>
           </div>
         </div>
       </div>
