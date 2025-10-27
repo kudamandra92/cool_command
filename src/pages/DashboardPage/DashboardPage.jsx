@@ -2,6 +2,7 @@ import Sidebar from "../../components/Sidebar";
 import Dropdown from "../../components/Dropdown";
 import ChartBar from "../../components/ChartBar";
 import ChartLine from "../../components/ChartLine";
+import Topbar from "../../components/Topbar";
 
 export default function DashboardPage() {
   const dataSet = {
@@ -20,10 +21,12 @@ export default function DashboardPage() {
         <div className="hidden sm:flex">
           <Sidebar />
         </div>
-        <div className="sm:hidden">+</div>
+        <div className="sm:hidden">
+          <Topbar />
+        </div>
         <div className="flex flex-col w-full p-8 gap-4">
-          <div className="flex w-full justify-between">
-            <div className="flex">
+          <div className="flex flex-col sm:flex-row w-full justify-between">
+            <div className="flex flex-col sm:flex-row">
               <div>
                 <Dropdown label={"Regional"} items={dataSet.regional} />
               </div>
